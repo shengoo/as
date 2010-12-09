@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   applicationComplete="windowedapplication1_applicationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import flashx.textLayout.accessibility.TextAccImpl;
+			import flashx.textLayout.container.ScrollPolicy;
+			
+			import mx.containers.HBox;
+			import mx.containers.TitleWindow;
+			import mx.controls.Button;
+			import mx.controls.Text;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+
+			private var win:TitleWindow = new TitleWindow();
+			private var checkBox:CheckBox= new CheckBox();
+			private var txt:Text = new Text();
+			private var yesBtn:Button=new Button();
+			private var cancelBtn:Button=new Button();
+			
+			protected function windowedapplication1_applicationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				win.title="slette";
+				win.showCloseButton=true;
+				win.width=440;
+				win.height=320;
+				win.verticalScrollPolicy = ScrollPolicy.OFF;
+				win.horizontalScrollPolicy = ScrollPolicy.OFF;
+//				checkBox.label="Slette boken Executive Compensation Best Practices fra disk?";
+//				checkBox.width = 260;
+				checkBox.x=80;
+				checkBox.y=80;
+				win.addChild(checkBox);
+				txt.text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+				txt.top = 20;
+				win.addChild(txt);
+				yesBtn.label="Ja";
+				cancelBtn.label="avbryte";
+				var hb:HBox=new HBox();
+				hb.addChild(yesBtn);
+				hb.addChild(cancelBtn);
+				win.addChild(hb);
+				win.addEventListener(CloseEvent.CLOSE, onClose);
+				PopUpManager.addPopUp(win, this, true);
+				PopUpManager.centerPopUp(win);
+			}
+			private function onClose(e:CloseEvent):void
+			{
+				PopUpManager.removePopUp(win);
+			}
+
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:CheckBox x="100" y="100" label="Test  Box"/>
+</s:WindowedApplication>

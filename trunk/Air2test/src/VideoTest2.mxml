@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" width="712" height="545">
+
+	<fx:Script>
+		<![CDATA[
+			import ProcessTest.FFProcess;
+			
+			import mx.controls.Alert;
+			
+			import org.osmf.events.TimeEvent;
+			
+			private var file:File;
+			private var startTag:Number;
+			private var endTag:Number;
+			private var saveFile:File;
+			private var playTimer:Timer;
+			
+			
+			protected function browse_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				file = new File();
+				file.addEventListener(Event.SELECT,selectFile);
+				var filter:FileFilter = new FileFilter("flv","*.flv");
+				file.browseForOpen("Select your flv video.",[filter]);
+			}
+			
+			private function selectFile(e:Event):void
+			{
+				if(file)
+				{
+					startTag = 0;
+					endTag = 0;
+					file.removeEventListener(Event.SELECT,selectFile);
+					vp.source = file.nativePath;
+//					vp.play();
+				}
+			}
+			
+			
+
+			protected function setStart_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(vp.playing)
+				{
+					startTag = vp.currentTime;trace(startTag);
+				}
+			}
+
+
+			protected function setEnd_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(vp.playing)
+				{
+					endTag = vp.currentTime;trace(endTag);
+				}
+			}
+
+
+			protected function cutFile_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				saveFile = new File();
+				saveFile.addEventListener(Event.SELECT,sliceFile);
+				saveFile.browseForSave("save your file");
+				
+//				var a:FFProcess = new FFProcess();
+//				a.slice(file.nativePath,"D:\\tttt.flv",startTag,endTag - startTag);
+			}
+			
+			private function sliceFile(e:Event):void
+			{
+				var a:FFProcess = new FFProcess();
+				a.addEventListener(Event.COMPLETE,function():void{Alert.show(saveFile.nativePath + " saved");});
+				a.slice(file.nativePath,saveFile.nativePath,startTag,endTag - startTag);
+			}
+
+
+			protected function playSelected_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(playSelected.selected)
+				{
+					if(startTag != endTag  &&  endTag > startTag)
+					{
+						playTimer = new Timer((endTag - startTag) * 1000);
+						playTimer.addEventListener(TimerEvent.TIMER,onTimer);
+						playTimer.start();
+						vp.seek(startTag);trace(startTag);
+						vp.play();
+						playSelected.label = "stop play";
+					}
+					else
+					{
+						Alert.show("start and end time not set right");
+						playSelected.selected = false;
+					}
+				}
+				else
+				{
+					playTimer.removeEventListener(TimerEvent.TIMER,onTimer);
+					playTimer.stop();
+					playSelected.label = "play selected";
+				}
+			}
+			
+			private function onTimer(e:TimerEvent):void
+			{
+				if(vp.playing)
+					vp.stop();
+				vp.seek(startTag);trace(startTag);
+				vp.play();
+			}
+
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:VideoPlayer id="vp" x="10" y="10" width="600" height="480"/>
+	<s:Button x="10" y="498" label="Browse" click="browse_clickHandler(event)"/>
+	<s:Button x="88" y="498" label="Set start" click="setStart_clickHandler(event)"/>
+	<s:Button x="166" y="498" label="Set end" click="setEnd_clickHandler(event)"/>
+	<s:Button x="346" y="498" label="cut file" click="cutFile_clickHandler(event)"/>
+	<mx:Button id="playSelected" x="244" y="498" label="play selected" click="playSelected_clickHandler(event)" toggle="true"/>
+</s:WindowedApplication>
