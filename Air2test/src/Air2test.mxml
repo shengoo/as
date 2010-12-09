@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   width="1024"
+					   height="668"
+					   applicationComplete="creationCompleteHandler(event)" xmlns:test="test.*" xmlns:UncaughtError="UncaughtError.*">
+		<mx:Canvas id="mainCanvas"/>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<!-- <UncaughtError:UncaughtErrorEventExample id="uncaughtErrorExample">
+		</UncaughtError:UncaughtErrorEventExample>
+		<UncaughtError:LoaderUncaughtErrorEventExample>
+			
+		</UncaughtError:LoaderUncaughtErrorEventExample> -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import ArrayTest.SortTest;
+			
+			import BandwidthTest.BandwidthTest;
+			
+			import Entities.MediaItem;
+			
+			import Events.*;
+			
+			import FileUpload.*;
+			
+			import FontTest.EmbeddedFontTest;
+			
+			import Guid.GUID;
+			
+			import MD5Test.MD5tf;
+			
+			import PopupTest.DeleteConfirm;
+			import PopupTest.DeleteConfirm2;
+			import PopupTest.PopupSaveText;
+			import PopupTest.PopupWithButtons;
+			
+			import ProcessTest.RegTest;
+			
+			import ScreenTest.ScreenManager;
+			
+			import Serilization.SerializationUtils;
+			
+			import UncaughtError.LoaderUncaughtErrorEventExample;
+			import UncaughtError.UncaughtErrorEventExample1;
+			
+			import VideoTest.*;
+			
+			import WebService.ImageTest;
+			import WebService.MantisTest;
+			
+			import cmdTest.RunCmdTest;
+			
+			import draws.*;
+			
+			import flash.desktop.*;
+			import flash.net.dns.AAAARecord;
+			import flash.net.navigateToURL;
+			
+			import mx.controls.Button;
+			import mx.controls.Image;
+			import mx.controls.ProgressBar;
+			import mx.controls.ProgressBarMode;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			import mx.events.PropertyChangeEvent;
+			import mx.messaging.channels.StreamingAMFChannel;
+			import mx.rpc.AsyncToken;
+			
+			import soundTest.*;
+			
+			import test.*;
+			
+			import xmltest.*;
+			
+			
+			private var vvv:String = "";
+//				private function onBandwidthTest(event:Event):void {
+//					trace(event.target.detectedBandwidth);
+//				}
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+//				stage.addChild(new SoundSlicer());
+//				mainCanvas.width = 1024;
+//				mainCanvas.height = 800;
+//				var nw:NativeWindow=new NativeWindow(new NativeWindowInitOptions());
+//				nw.width=250
+//				nw.height=90
+//				nw.stage.addChild(new Camera_getCameraExample());
+//				ScreenManager.openWindowCenteredOnScreen(nw,2);
+//				var t:LoadVideoTest = new LoadVideoTest();
+//				addElement(new SoundRecorder());
+//				this.stage.addChild(new Camera_getCameraExample());
+//				addElement(t);
+//				mainCanvas.rawChildren.addChild(new Camera_getCameraExample());
+//				stage.scaleMode = StageScaleMode.NO_SCALE;
+//				stage.align = StageAlign.TOP_LEFT;
+//				mainCanvas.rawChildren.addChild(new CameraExample());
+//				var bandwidthTester:BandwidthTest = new BandwidthTest( );
+//				bandwidthTester.addEventListener(Event.COMPLETE, onBandwidthTest);
+//				bandwidthTester.test( );
+//				mainCanvas.rawChildren.addChild(new PlayVideoTest());
+//				var f:FileUploadTest2 = new FileUploadTest2();
+//				bbb.addEventListener(MouseEvent.CLICK,function():void{f.browseFile();});
+//				var sr:SoundRecorder = new SoundRecorder();
+//				addElement(sr);
+//				var t:SoundTest = new SoundTest();
+				var t:SoundSlicer = new SoundSlicer();
+				mainCanvas.rawChildren.addChild(t);
+//				stage.addChild(new MouseTest());
+//				var bubbles:MouseTest = new MouseTest();//bubbles
+//				mainCanvas.rawChildren.addChild(bubbles);
+//				var t:TextFieldTest = new TextFieldTest();
+//				var r:ReadTest = new ReadTest();
+//				var hw:HelloWorldTest = new HelloWorldTest();//Hello world
+//				var mt:MouseEventTest = new MouseEventTest();//Mouse up,down,move
+//				var timerTest:TimerTest = new TimerTest();//two moves
+//				var add:AddAt = new AddAt();//add at 
+//				var display:DisplayListExample = new DisplayListExample();//add twice
+//				var getchild:GetChildAtExample = new GetChildAtExample();
+//				var buttons:SimpleButtonDemo = new SimpleButtonDemo();
+//				var up:USBPanel = new USBPanel();
+//				var dt:DRMDownloader = new DRMDownloader(new File("C:/xxx.acsm"));
+//				var ur:UrlPostRequest = new UrlPostRequest();
+//				var r:ReadFromWeb = new ReadFromWeb();
+//				var p:MinMaxPanel = new MinMaxPanel();
+//				var l:LabelTest = new LabelTest();
+//				var ef:EmbeddedFontTest = new EmbeddedFontTest();
+//				var r:RunCmdTest = new RunCmdTest();
+//				var r:RemoveIcon = new RemoveIcon();
+//				var r:ProgressBarExample = new ProgressBarExample();
+//				var pb:ProgressBar = new ProgressBar();
+//				pb.move(10, 10);
+//				pb.mode = ProgressBarMode.MANUAL;
+//				var r:LoadingIcon = new LoadingIcon();
+//				var t:PopupSaveText = new PopupSaveText();
+//				var t:LoadImage = new LoadImage();
+//				var t:Image = new Image();
+//				t.load("loader_transparent_BG.gif");
+//				var ui:UIComponent = new UIComponent();
+//				ui.addChild(t);
+//				var t:PopupWithButtons = new PopupWithButtons();
+//				var t:UncaughtErrorEventExample1 = new UncaughtErrorEventExample1();
+//				var t:LoaderUncaughtErrorEventExample = new LoaderUncaughtErrorEventExample();
+//				var t:Texts = new Texts();
+//				var t:MD5tf = new MD5tf();
+//				var t:DeleteConfirm2 = new DeleteConfirm2();
+//				var t:SortTest = new SortTest();
+//				mainCanvas.rawChildren.addChild(t);
+//				addElement(t);
+//				var request:URLRequest = new URLRequest("file://c:/");
+//				flash.net.navigateToURL(request);
+//				var r:RegTest = new RegTest();
+//				var i:ImageTest = new ImageTest();
+//				var mantis:MantisTest = new MantisTest();
+//				mantis.testReportAsync();
+//				var asyn:AsyncToken = mantis.testReport();
+//				asyn.addEventListener(PropertyChangeEvent.PROPERTY_CHANGE,onPropertyChanged);
+			}
+			
+			private function onPropertyChanged(e:PropertyChangeEvent):void
+			{
+				
+			}
+			
+			
+		]]>
+	</fx:Script>
+	<!-- <test:MinMaxPanel title="panel" height="300" width="250"/> -->
+	<!-- <mx:Label truncateToFit="true"
+			   text="al;faslfalsdjfalsdjflasjdkflak"
+			    maxWidth="100" /> -->
+</s:WindowedApplication>

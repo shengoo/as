@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					    layout="vertical"
+						 backgroundColor="white"
+						  creationComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import flash.events.*;
+			
+			import mx.containers.TitleWindow;
+			import mx.controls.Button;
+			import mx.controls.HTML;
+			import mx.controls.Label;
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+			
+			import test.AddThisHtml;
+			
+			private var titleWindow:TitleWindow;
+			
+			private function init():void {
+				titleWindow = new TitleWindow();
+				titleWindow.title = "Custom title";
+				titleWindow.showCloseButton = true;
+				titleWindow.width = 240;
+				titleWindow.height = 180;
+				titleWindow.addEventListener(CloseEvent.CLOSE, titleWindow_close);
+//				titleWindow.addChild(add);
+				
+				var a:HTML = new HTML();
+//				a.htmlLoader.placeLoadStringContentInApplicationSandbox = true;
+				a.location = "add.html";
+				titleWindow.addChild(a);
+				
+				var button:Button = new Button();
+				button.label = "show";
+				button.addEventListener(MouseEvent.CLICK,click);
+				this.addChild(button);
+				
+				
+			}
+			
+			private function click(e:MouseEvent):void
+			{
+				PopUpManager.addPopUp(titleWindow, this, true);
+				PopUpManager.centerPopUp(titleWindow);
+			}
+			
+			private function titleWindow_close(evt:CloseEvent):void {
+				PopUpManager.removePopUp(titleWindow);
+			}
+
+		]]>
+	</fx:Script>
+
+</mx:WindowedApplication>

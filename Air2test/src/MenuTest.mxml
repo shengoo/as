@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   creationComplete="creationCompleteHandler(event)" xmlns:test="test.*" >
+	<mx:Canvas id="mainCanvas"/>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import test.CustomMenu;
+			import test.MinMaxPanel;
+			public function creationCompleteHandler(event:FlexEvent):void
+			{
+				var c:CustomMenu = new CustomMenu();
+				mainCanvas.rawChildren.addChild(c);	
+//				var nativeMenu:NativeMenu = new  NativeMenu();
+//				var menuItem1:NativeMenuItem = new NativeMenuItem("Menu Item 1");
+//				var menuItem2:NativeMenuItem = new NativeMenuItem("Menu Item 2");
+//				nativeMenu.addItem(menuItem1);
+//				nativeMenu.addItem(menuItem2);
+//				this.nativeApplication.menu = nativeMenu;
+//				this.contextMenu = nativeMenu;
+//				NativeApplication.nativeApplication.menu.display(this.stage, 100, 100);
+//				var fileMenu:NativeMenuItem;
+//				var editMenu:NativeMenuItem;
+					this.statusBar.visible = false;               
+////				if (NativeWindow.supportsMenu){
+//					this.nativeWindow.menu = new NativeMenu();
+//					this.nativeWindow.menu.addItem(new NativeMenuItem("File"));
+//					this.nativeWindow.menu.addItem(new NativeMenuItem("Edit"));
+////				}
+				
+
+	
+			}
+			
+			
+			
+		]]>
+	</fx:Script>
+	<mx:Menu>
+		
+	</mx:Menu>
+</s:WindowedApplication>

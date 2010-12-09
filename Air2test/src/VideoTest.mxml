@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" width="796" height="645">
+
+	<fx:Script>
+		<![CDATA[
+			
+			private var videoURL:String = "";
+			private var connection:NetConnection;
+			private var stream:NetStream;
+			private var videoContainer:Sprite = new Sprite();
+			private var file:File;
+			
+			
+			protected function browseBtn_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				file = new File();
+				file.addEventListener(Event.SELECT,selectFile);
+				file.browse();
+			}
+			
+			private function selectFile(e:Event):void
+			{
+				if(file)
+				{
+					file.removeEventListener(Event.SELECT,selectFile);
+					videoURL = file.nativePath;
+				}
+				connection = new NetConnection();
+				connection.addEventListener(NetStatusEvent.NET_STATUS, netStatusHandler);
+				connection.addEventListener(SecurityErrorEvent.SECURITY_ERROR, securityErrorHandler);
+				connection.connect(null);
+			}
+			
+			private function netStatusHandler(event:NetStatusEvent):void {
+				switch (event.info.code) {
+					case "NetConnection.Connect.Success":
+						connectStream();
+						break;
+					case "NetStream.Play.StreamNotFound":
+						trace("Unable to locate video: " + videoURL);
+						break;
+				}
+			}
+			
+			private function connectStream():void {
+				stream = new NetStream(connection);
+				stream.addEventListener(NetStatusEvent.NET_STATUS, netStatusHandler);
+				stream.addEventListener(AsyncErrorEvent.ASYNC_ERROR, asyncErrorHandler);
+				var client:Object = new Object( );
+				client.onMetaData = function(metadata:Object):void {
+					trace(metadata.duration);
+				};
+				stream.client = client;
+				var video:Video = new Video(600,448);
+				video.attachNetStream(stream);
+				stream.play(videoURL);
+				videoContainer.addChild(video);
+				ca.rawChildren.addChild(videoContainer);
+				
+			}
+			
+			private function securityErrorHandler(event:SecurityErrorEvent):void {
+				trace("securityErrorHandler: " + event);
+			}
+			
+			private function asyncErrorHandler(event:AsyncErrorEvent):void {
+				// ignore AsyncErrorEvent events.
+			}
+
+
+			protected function progressbar1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+			}
+
+
+			protected function ca_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+			}
+
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Button id="browseBtn" label="Browse file" click="browseBtn_clickHandler(event)" x="10" y="10"/>
+	<mx:Canvas id="ca" width="600" height="480" x="10" y="39" click="ca_clickHandler(event)"/>
+	<s:HSlider x="10" y="527" width="600" />
+</s:WindowedApplication>
