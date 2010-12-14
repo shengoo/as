@@ -66,20 +66,14 @@ public class NoteBook extends JFrame implements ActionListener, ItemListener,
 
 		jm1.add(jmi1);
 		jmi1.addActionListener(this);
-		jmi1
-				.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK,
-						false));
+		jmi1.setAccelerator(KeyStroke.getKeyStroke('N', Event.CTRL_MASK,false));
 		jm1.addSeparator();
 		jm1.add(jmi2);
-		jmi2
-				.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK,
-						false));
+		jmi2.setAccelerator(KeyStroke.getKeyStroke('O', Event.CTRL_MASK,false));
 		jmi2.addActionListener(this);
 		jm1.addSeparator();
 		jm1.add(jmi3);
-		jmi3
-				.setAccelerator(KeyStroke.getKeyStroke('S', Event.CTRL_MASK,
-						false));
+		jmi3.setAccelerator(KeyStroke.getKeyStroke('S', Event.CTRL_MASK,false));
 		jmi3.addActionListener(this);
 		jm1.addSeparator();
 		jm1.add(jmi4);
