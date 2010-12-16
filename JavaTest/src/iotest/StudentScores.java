@@ -53,10 +53,26 @@ public class StudentScores {
 	}
 	
 	static void OutPutStudentsInConsole(){
+		int high = 0;
+		int low = 0;
+		int ava = 0;
+		int all = 0;
 		for (int i = 0; i<students.size(); i++){
 			Student stu = students.get(i);
+			int score = stu.getScore();
+			if(low == 0)
+				low = score;
+			if(high == 0)
+				high = score;
+			if(score<low)
+				low = score;
+			if(score>high)
+				high = score;
+			all += score;
 			System.out.println(stu.getName() + " " + stu.getNumber() + " " + stu.getScore());
 		}
+		ava = all/students.size();
+		System.out.println("最低分:" + low + "最高分：" + high + "平均分：" + ava);
 	}
 	
 	static void RecordStudentScores() throws Exception{
