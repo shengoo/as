@@ -3,10 +3,8 @@ package iotest;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +61,6 @@ public class StudentScores {
 	
 	static void RecordStudentScores() throws Exception{
 		String s;
-		int i = 0;
 		System.out.println("");
 		while(true){
 			Student stu = new Student();
