@@ -71,6 +71,8 @@
 			
 			import soundTest.*;
 			
+			import spark.components.TextArea;
+			
 			import test.*;
 			
 			import xmltest.*;
@@ -103,13 +105,13 @@
 //				bandwidthTester.addEventListener(Event.COMPLETE, onBandwidthTest);
 //				bandwidthTester.test( );
 //				mainCanvas.rawChildren.addChild(new PlayVideoTest());
-//				var f:FileUploadTest2 = new FileUploadTest2();
+				var f:FileUploadTest2 = new FileUploadTest2();var a:TextArea
 //				bbb.addEventListener(MouseEvent.CLICK,function():void{f.browseFile();});
 //				var sr:SoundRecorder = new SoundRecorder();
 //				addElement(sr);
 //				var t:SoundTest = new SoundTest();
-				var t:SoundSlicer = new SoundSlicer();
-				mainCanvas.rawChildren.addChild(t);
+//				var t:SoundSlicer = new SoundSlicer();
+//				mainCanvas.rawChildren.addChild(t);
 //				stage.addChild(new MouseTest());
 //				var bubbles:MouseTest = new MouseTest();//bubbles
 //				mainCanvas.rawChildren.addChild(bubbles);
