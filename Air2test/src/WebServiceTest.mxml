@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   minWidth="955" minHeight="600"
+					   creationComplete="initApp()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:WebService id="employeeService"
+					  wsdl="http://www.adobetes.com/f4iaw100/remoteData/EmployeeData.cfc?wsdl"
+					  result="employeeService_resultHandler(event)"/>
+
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.events.CalendarLayoutChangeEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			// variable declarations ------------------------------------
+			[Bindable] 
+			private var employees:ArrayCollection = new ArrayCollection();
+			
+			// getter/setters -------------------------------------------
+			
+			
+			// helper methods -------------------------------------------
+			
+			
+			
+			private function initApp():void
+			{	
+				employeeService.getEmployees();
+			}
+			
+			
+			protected function employeeService_resultHandler(event:ResultEvent):void
+			{
+				employees = event.result as ArrayCollection;
+			}
+
+		]]>
+	</fx:Script>
+	
+	
+	<mx:DataGrid dataProvider="{employees}">
+		
+	</mx:DataGrid>
+</s:WindowedApplication>
