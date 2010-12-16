@@ -8,7 +8,7 @@ import java.net.Socket;
 /**
  * 
  * @author Qing
- *
+ * 
  */
 public class TcpTest {
 
@@ -23,60 +23,68 @@ public class TcpTest {
 		client.start();
 	}
 }
-	class TcpServer1 extends Thread {
-		public void run() {
-			try {
-				ServerSocket listen = new ServerSocket(5050);
 
-				Socket server = listen.accept();
+class TcpServer1 extends Thread {
+	public void run() {
+		try {
+			ServerSocket listen = new ServerSocket(5050);
 
-				InputStream in = server.getInputStream();
-				OutputStream out = server.getOutputStream();
+			Socket server = listen.accept();
 
-				int radius = in.read();
+			InputStream in = server.getInputStream();
+			OutputStream out = server.getOutputStream();
+
+			int radius;
+			while ((radius = in.read()) > 0) {
 				System.out.println("server收到:" + radius);
 
 				byte[] b = caculate(radius);
 				out.write(b);
 				System.out.println("server输出:" + new String(b));
-
-				out.close();
-				in.close();
-				server.close();
-				listen.close();
-			} catch (Exception e) {
-
 			}
-		}
+			out.close();
+			in.close();
+			server.close();
+			listen.close();
+		} catch (Exception e) {
 
-		byte[] caculate(int ra) {
-			double result = (ra * ra * Math.PI);
-			return Double.toString(result).getBytes();
 		}
 	}
 
-	class TcpClient1 extends Thread {
-		public void run() {
-			try {
-				Socket client = new Socket("127.0.0.1", 5050);
+	byte[] caculate(int ra) {
+		double result = (ra * ra * Math.PI);
+		return Double.toString(result).getBytes();
+	}
+}
 
-				InputStream in = client.getInputStream();
-				OutputStream out = client.getOutputStream();
-				
-				out.write(3);
-				System.out.println("client输出:" + 3);
+class TcpClient1 extends Thread {
+	public void run() {
+		try {
+			Socket client = new Socket("127.0.0.1", 5050);
 
-				byte[] b = new byte[20];
-				in.read(b);
-				System.out.println("client收到:" + new String(b));
+			InputStream in = client.getInputStream();
+			OutputStream out = client.getOutputStream();
+			byte[] b = new byte[20];
 
-				out.close();
-				in.close();
-				client.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			out.write(3);
+			System.out.println("client输出:" + 3);
+
+			in.read(b);
+			System.out.println("client收到:" + new String(b));
+
+			
+			out.write(5);
+			System.out.println("client输出:" + 5);
+
+			in.read(b);
+			System.out.println("client收到:" + new String(b));
+			
+			
+			out.close();
+			in.close();
+			client.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
-
-
+}

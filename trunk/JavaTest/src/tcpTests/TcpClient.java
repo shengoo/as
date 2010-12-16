@@ -22,9 +22,9 @@ public class TcpClient {
           
         out.write(3);  
   
-        byte[] b = null ;
+        byte[] b = new byte[20];
         in.read(b);
-        System.out.println("收到:" + b.toString());  
+        System.out.println("收到:" + new String(b));  
   
         out.close();  
         in.close();  
