@@ -1,14 +1,15 @@
 package log4jtest;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+//import org.apache.log4j.PropertyConfigurator;
 
 public class WriteLogTest {
-	static {
-		PropertyConfigurator.configure(WriteLogTest.class
-		.getResource("./log4j.properties"));
-		}
+//	static {
+//			PropertyConfigurator.configure(WriteLogTest.class
+//					.getResource("/log4j.properties"));
+//	}
 	private static Logger logger = Logger.getLogger(WriteLogTest.class);
+
 	/**
 	 * @param args
 	 */
