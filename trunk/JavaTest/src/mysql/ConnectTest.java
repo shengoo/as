@@ -11,11 +11,13 @@ public class ConnectTest {
 		// TODO Auto-generated method stub
 		String className = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://localhost:3306/testdb";
+		String username = "root";
+		String password = "root";
 		try  
         {  
-//            Class.forName(className);  
-            new com.mysql.jdbc.Driver();// same with upper sentence.
-            Connection conn = DriverManager.getConnection(url,"root","root");   
+            Class.forName(className);  
+//            new com.mysql.jdbc.Driver();// same with upper sentence.
+            Connection conn = DriverManager.getConnection(url,username,password);   
             Statement stmt = (Statement)conn.createStatement();   
             ResultSet rs = stmt.executeQuery("SELECT * from user");   
             ResultSetMetaData rsmt = rs.getMetaData();
