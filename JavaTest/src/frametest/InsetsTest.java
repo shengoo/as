@@ -16,7 +16,7 @@ public class InsetsTest {
 		f.setLayout(new GridBagLayout());
 		Button b= new Button("222222");
 		Insets i=new Insets(200,200,600,600);
-		
+		i.clone();
 		f.add(b);
 		f.pack();
 		f.setVisible(true);
