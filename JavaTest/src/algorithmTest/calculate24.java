@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,7 +15,11 @@ import javax.swing.JTextField;
 
 public class calculate24 extends JFrame{
 
- private javax.swing.JPanel jContentPane = null;
+ /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2721548622736577140L;
+private javax.swing.JPanel jContentPane = null;
  private JLabel jLabel = null;
  private JLabel jLabel1 = null;
  private JTextField jTextField = null;

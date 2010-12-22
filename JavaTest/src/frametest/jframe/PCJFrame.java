@@ -5,6 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class PCJFrame extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -276627774239831064L;
 	private JRadioButton radio_Rec, radio_Ell;
 	private JButton button_paint;
 	private JTextField text_perimeter, text_area;
@@ -90,6 +94,10 @@ public class PCJFrame extends JFrame implements ActionListener {
 }
 
 class RectangleCanvas extends Canvas {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4271723821787047583L;
 	private Color color;
 	private int length, width;
 
@@ -106,6 +114,10 @@ class RectangleCanvas extends Canvas {
 }
 
 class EllipseCanvas extends Canvas {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 608473407534619186L;
 	private Color color;
 	private int length, width;
 

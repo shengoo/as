@@ -6,6 +6,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 class Frame extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JButton jb1, jb2, jb3, jb4, jb5, jb6;
 	JLabel jl1, jl2, jl3, jl4, jl5, jl6, jl7, jl8, jl9;
 	JTextField jt1, jt2;
@@ -120,6 +124,6 @@ class Frame extends JFrame implements ActionListener {
 
 public class FrameTest {
 	public static void main(String args[]) {
-		Frame f = new Frame();
+		new Frame();
 	}
 }
