@@ -4,6 +4,10 @@ import java.awt.Button;
 import java.awt.Frame;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
 
 public class InsetsTest {
 
