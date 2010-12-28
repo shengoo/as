@@ -8,5 +8,8 @@ public class Test {
 		char a='a';
 		char b='a';
 		System.out.println(a==b);
+		System.out.println(String.format("%1$,09d", -3123));
+		System.out.println(String.format("%1$s", "0000000"));
+		System.out.println("a".format("%1$s", "0000000"));
 	}
 }
