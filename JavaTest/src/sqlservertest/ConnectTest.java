@@ -2,6 +2,9 @@ package sqlservertest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 
 public class ConnectTest {
 
@@ -17,6 +20,20 @@ public class ConnectTest {
 		try {
 			Class.forName(className);
 			Connection conn= DriverManager.getConnection(url,user,password);
+			Statement stmt = (Statement)conn.createStatement();   
+            ResultSet rs = stmt.executeQuery("SELECT * from test");   
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int count = rsmt.getColumnCount();
+  
+            while (rs.next())   
+            {   
+                 for (int i = 1; i <= count; i++) {
+					System.out.print("[" + rsmt.getColumnName(i) + "]:" + rs.getObject(i));
+					if(i<count)
+						System.out.print(",");
+				}
+                 System.out.println("");
+            }   
 			conn.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
