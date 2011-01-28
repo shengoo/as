@@ -30,6 +30,10 @@
 			
 			import Guid.GUID;
 			
+			import HttpLoad.HttpPostLoad;
+			
+			import JsonTest.GetJsonTest;
+			
 			import MD5Test.MD5tf;
 			
 			import PopupTest.DeleteConfirm;
@@ -39,6 +43,7 @@
 			
 			import ProcessTest.RegTest;
 			
+			import ScreenTest.DockingWindow;
 			import ScreenTest.ScreenManager;
 			
 			import Serilization.SerializationUtils;
@@ -75,6 +80,8 @@
 			
 			import test.*;
 			
+			import windowTest.splashWindow;
+			
 			import xmltest.*;
 			
 			
@@ -85,6 +92,12 @@
 			
 			protected function creationCompleteHandler(event:FlexEvent):void
 			{
+				var splash:splashWindow = new splashWindow();
+				splash.open();
+//				var dock:DockingWindow = new DockingWindow();
+//				stage.addChild(dock);
+//				dock.init();
+//				new HttpPostLoad();
 //				stage.addChild(new SoundSlicer());
 //				mainCanvas.width = 1024;
 //				mainCanvas.height = 800;
@@ -105,7 +118,7 @@
 //				bandwidthTester.addEventListener(Event.COMPLETE, onBandwidthTest);
 //				bandwidthTester.test( );
 //				mainCanvas.rawChildren.addChild(new PlayVideoTest());
-				var f:FileUploadTest2 = new FileUploadTest2();var a:TextArea
+//				var f:FileUploadTest2 = new FileUploadTest2();
 //				bbb.addEventListener(MouseEvent.CLICK,function():void{f.browseFile();});
 //				var sr:SoundRecorder = new SoundRecorder();
 //				addElement(sr);
