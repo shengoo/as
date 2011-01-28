@@ -36,7 +36,9 @@ package FileUpload
 		private function onSelectFile(e:Event):void
 		{
 			trace(file.size);
-			file.upload(new URLRequest("http://localhost/upload.php"));
+			var req:URLRequest = new URLRequest("http://localhost/upload.php");
+			
+			file.upload(req);
 		}
 		
 		private function onFileProgress(e:ProgressEvent):void

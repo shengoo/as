@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Window xmlns:fx="http://ns.adobe.com/mxml/2009"
+		   xmlns:s="library://ns.adobe.com/flex/spark"
+		   xmlns:mx="library://ns.adobe.com/flex/mx" width="265" height="226"
+		   systemChrome="none"
+		   type="lightweight" showFlexChrome="false" transparent="true"
+		   verticalScrollPolicy="off" horizontalScrollPolicy="off" windowComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			private function init():void
+			{
+				this.nativeWindow.x = Screen.mainScreen.visibleBounds.width/2 - this.width/2;
+				this.nativeWindow.y = Screen.mainScreen.visibleBounds.height/2 - this.height/2;
+				this.nativeWindow.visible = true;
+				
+				this.dispatchEvent(new Event(Event.COMPLETE));
+				var timer:Timer = new Timer(500,100);
+				timer.addEventListener(TimerEvent.TIMER,onTimer);
+				timer.start();
+			}
+			
+			private function onTimer(e:TimerEvent):void
+			{
+				if(lbl.text.length<15)
+					lbl.text += ".";
+				else
+					lbl.text = "download";
+			}
+			
+			public function showProgress(str:String,num:int):void
+			{
+				if(!pb.visible)
+					pb.visible = true;
+				pb.label = str;
+				pb.setProgress(num,100);
+			}
+		]]>
+	</fx:Script>
+	<mx:Canvas width="266" height="227" borderStyle="none">
+		<mx:Image source="assets/image/splash-bg.jpg" >
+			
+		</mx:Image>
+		
+		<s:Label id="lbl" y="150" fontSize="14" horizontalCenter="0" color="0xdddddd" text="download...">
+		</s:Label>
+		<mx:ProgressBar id="pb"  y="180" visible="false" chromeColor="white"
+						minimum="0" maximum="100"
+						direction="right" mode="manual" width="80%"
+						horizontalCenter="0">
+			
+		</mx:ProgressBar>
+	</mx:Canvas>
+</mx:Window>
