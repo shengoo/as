@@ -64,6 +64,9 @@
     <application path="WebServiceTest.mxml">
       <airExcludes/>
     </application>
+    <application path="PlayVideoTest.mxml">
+      <airExcludes/>
+    </application>
   </applications>
   <modules/>
   <buildCSSFiles/>
