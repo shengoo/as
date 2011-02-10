@@ -56,6 +56,8 @@
 			import WebService.ImageTest;
 			import WebService.MantisTest;
 			
+			import buttons.ImageButton;
+			
 			import cmdTest.RunCmdTest;
 			
 			import draws.*;
@@ -91,9 +93,9 @@
 //				}
 			
 			protected function creationCompleteHandler(event:FlexEvent):void
-			{
-				var splash:splashWindow = new splashWindow();
-				splash.open();
+			{addElement(new ImageButton());
+//				var splash:splashWindow = new splashWindow();
+//				splash.open();
 //				var dock:DockingWindow = new DockingWindow();
 //				stage.addChild(dock);
 //				dock.init();

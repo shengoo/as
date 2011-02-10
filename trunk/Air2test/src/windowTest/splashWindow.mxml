@@ -52,5 +52,6 @@
 						horizontalCenter="0">
 			
 		</mx:ProgressBar>
+		<s:Button x="97" y="76" label="Button" />
 	</mx:Canvas>
 </mx:Window>
