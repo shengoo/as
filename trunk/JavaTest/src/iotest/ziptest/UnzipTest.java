@@ -28,25 +28,19 @@ public class UnzipTest {
 			ZipInputStream zis = new ZipInputStream(new BufferedInputStream(fis));
 			ZipEntry entry;
 			while((entry = zis.getNextEntry()) != null){
-				System.out.print("Extracting:" + entry);
-				int count;
-				byte data[] = new byte[BUFFER];
 				File file = new File(unzipDir + entry.getName());
-				if(entry.isDirectory())
+				if(file.isDirectory())
 				{
 					if(!file.exists())
 						file.mkdirs();
+					System.out.println("Create directory: " + file.getAbsolutePath());
 					continue;
 				}
-				else {
-					file = new File(unzipDir + entry.getName());
-				}
+				System.out.print("Extracting:" + entry);
+				int count;
+				byte data[] = new byte[BUFFER];
 				System.out.println(" to " + file.getAbsolutePath());
-//				if(!file.exists())
-//				{
-//					if(file.isDirectory())
-//						file.createNewFile();
-//				}
+
 				FileOutputStream fos = new FileOutputStream(file);
 				dest = new BufferedOutputStream(fos,BUFFER);
 				while((count = zis.read(data, 0, BUFFER)) != -1){
