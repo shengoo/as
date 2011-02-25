@@ -18,7 +18,7 @@ public class UnzipTest {
 	
 	static final int BUFFER = 2048;
 	static String unzipDir = "D:/temp/unzip/";
-	static File zipFile = new File("book.zip");
+	static File zipFile = new File("D:/temp/book.zip");
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -29,7 +29,7 @@ public class UnzipTest {
 			ZipEntry entry;
 			while((entry = zis.getNextEntry()) != null){
 				File file = new File(unzipDir + entry.getName());
-				if(file.isDirectory())
+				if(entry.isDirectory())
 				{
 					if(!file.exists())
 						file.mkdirs();
