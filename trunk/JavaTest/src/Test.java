@@ -11,7 +11,7 @@ public class Test {
 		System.out.println(String.format("%1$,09d", -3123));
 		System.out.println(String.format("%1$s", "0000000"));
 		System.out.println("a".format("%1$s", "0000000"));
-		float a1 =  ((float)800/600);
+		float a1 =  (float)(800/600);
 		System.out.println(a1);
 	}
 }
