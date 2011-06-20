@@ -1,5 +1,6 @@
 public class Test {
 	public static void main(String[] args) {
+		System.out.println(Test.class.getName());
 		int i = 10;
 		int j = i++;
 		System.out.println(j);

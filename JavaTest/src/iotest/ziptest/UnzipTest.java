@@ -16,19 +16,28 @@ public class UnzipTest {
 	 */
 	
 	
-	static final int BUFFER = 2048;
+	static final int BUFFER = 20480;
 	static String unzipDir = "D:/temp/unzip/";
 	static File zipFile = new File("D:/temp/book.zip");
 	
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		String fileName = "D:/zip/noen.zip";
+		String password = "123456";
+		String extractDir = "D:/zip/unzip/" + Math.random() * 65536
+				+ File.separator;
+
+		long start = System.currentTimeMillis();
+		
 		try {
 			BufferedOutputStream dest = null;
-			FileInputStream fis = new FileInputStream(zipFile);
+			FileInputStream fis = new FileInputStream(fileName);
 			ZipInputStream zis = new ZipInputStream(new BufferedInputStream(fis));
 			ZipEntry entry;
 			while((entry = zis.getNextEntry()) != null){
-				File file = new File(unzipDir + entry.getName());
+				File file = new File(extractDir + entry.getName());
 				if(entry.isDirectory())
 				{
 					if(!file.exists())
@@ -50,6 +59,8 @@ public class UnzipTest {
 				dest.close();
 			}
 			zis.close();
+			long end = System.currentTimeMillis();
+	        System.out.println(end - start + "ms");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
