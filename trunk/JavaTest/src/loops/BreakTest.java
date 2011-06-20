@@ -14,6 +14,7 @@ public class BreakTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		System.out.println(BreakTest.class.getName());
 		// TODO Auto-generated method stub
 		for (int i = 0; i < 6; i++) {
 			if (i < 3) {
